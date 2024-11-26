@@ -1,0 +1,591 @@
+						############################
+						      STRINGS in JAVA 
+						############################
+- A String variable contains a collection of characters surrounded by double quotes:
+- Strings are used for storing text.
+- Non Primitive DataType or Reference DataType belongs to java.lang package and it is final class.
+- Stores group of characters
+- In Java, string is basically an object that represents sequence of char values. 
+	An array of characters works same as Java string
+- Strings in Java are immutable, which means once a String object is created, it cannot be changed. 
+	Any operation that seems to modify a string actually creates a new string object.
+	
+- Its implements Serializable , Comparable ( have compareTo() method) , CharSequence
+Example:
+	String greeting = "Hello";
+
+	char[] ch={'b', 'y', 'e'};  
+	String s=new String(ch); 
+	
+Constructors:
+	- public String()
+	- public String(String original)
+	- public String(char[] value)
+	- public String(char[] value, int offset, int count)
+	- public String(byte[] bytes)
+	- public String(byte[] bytes, int offset, int length)
+	- public String(byte[] bytes, String charsetName) throws UnsupportedEncodingException
+	- public String(byte[] bytes, int offset, int length, String charsetName) throws UnsupportedEncodingException
+	- public String(StringBuilder builder)
+	- public String(StringBuffer buffer)
+
+
+ 
+	
+TWO WAYS TO CREATE 
+-----------------------
+Using Literals:
+ - Each time when we create a string literal, the JVM checks the "STRING CONSTANT POOL" first. 
+  If the string already exists in the pool, a reference to the pooled instance is returned. 
+  If the string doesn't exist in the pool, a new string instance is created and placed in the pool.
+
+ Example:
+	String s1="welcome";  
+	
+	String s2="Welcome";  
+	String s3="Welcome";//It doesn't create a new instance  
+	
+	Try this?
+	s1 == s2  // false 
+	s2 == s3 // true
+	s1.equals(s2) // false 
+	s2.equals(s3) // true 
+	s1.equalsIgnoreCase(s2) // true
+
+**NOTE** 
+-> == will compare address of reference variables 
+-> .equals() method compares content
+	
+Using new keyword:
+---------------------------
+  This creates a new String object in HEAP MEMORY, 
+  even if the same string literal exists in the pool.
+  
+  Examples:
+	String s4 = new String("Hello, World!"); // creates new instance
+	String s5 = new String("Hello, World!"); //create new instance. 
+	String s6 = new String("Hi, World"); // creates new instance 
+	
+	Try this?
+	s4 == s5 
+	s5 == s6 
+	
+	s4.equals(s5)
+	s5.equals(s6) 
+
+Methods
+--------------
+String str1 = "Hello, World!";
+Length:
+	int length = str1.length();
+	
+Concatenation: (concat)
+	String str3 = str1 + " How are you?";
+	
+	String + anything : String 
+	anything + String : String 
+
+Substring:
+	String substr = str1.substring(7, 12); // "World"
+
+Character at a Position:
+	char ch = str1.charAt(6); // 'W'
+
+Index of a Substring:
+	int index = str1.indexOf("World"); // 7
+
+Replace Characters or Substrings:
+	String replaced = str1.replace("World", "Java");
+
+Convert to Upper/Lower Case:
+	String upper = str1.toUpperCase();
+	String lower = str1.toLowerCase();
+	
+Trim Whitespace:
+	String trimmed = str1.trim();
+
+Equality:
+	boolean isEqual = str1.equals("Hello, World!");
+
+Ignoring Case:
+	boolean isEqualIgnoreCase = str1.equalsIgnoreCase("hello, world!");
+
+Converts different types of values into string:
+	int number = 123;
+	boolean boolValue = true;
+	char singleChar = 'A';
+	char[] charArray = {'J', 'a', 'v', 'a'};
+	
+	// Using valueOf with primitive types
+	String str1 = String.valueOf(number);  // "123"
+	String str2 = String.valueOf(boolValue);  // "true"
+	String str3 = String.valueOf(singleChar);  // "A"
+	String str4 = String.valueOf(charArray);  // "Java"
+
+	// Using valueOf with a character array with offset and count
+	String str5 = String.valueOf(charArray, 1, 3);  // "ava"
+
+Compare Strings:
+	compareTo() compares two strings lexicographically. 
+	The comparison is based on the Unicode value of each character in the strings.
+	
+	    String str1 = "apple";
+        String str2 = "banana";
+        String str3 = "apple";
+
+        System.out.println(str1.compareTo(str2)); // Negative value (-1)
+        System.out.println(str2.compareTo(str1)); // Positive value (1)
+        System.out.println(str1.compareTo(str3)); // Zero (0)
+
+HashCode:
+	- For a String object, 
+	the hashCode method is computed based on the contents of the string. 
+	
+	    String str1 = "hello";
+        String str2 = "world";
+        
+        System.out.println("Hash code of 'hello': " + str1.hashCode());
+        System.out.println("Hash code of 'world': " + str2.hashCode());
+
+
+OTHER METHODS 
+------------------------
+split()
+starsWith()
+endsWith()
+replaceAll() 
+lastIndexOf() 
+getBytes() 
+match() 
+
+Explore 
+-----------------
+What is Comparable and Comparator Interfaces?
+
+
+==========
+						############################
+						      StringBuffer in JAVA 
+						############################
+	
+- Mutable version of String 
+- StringBuffer allows you to modify the string without creating new objects each time
+- Thread-Safe: StringBuffer methods are synchronized, meaning they are safe to use in a multi-threaded environment
+- Capacity: StringBuffer starts with an initial capacity and automatically grows as needed
+- Default capacity is 16 locations 
+	new capacity: (old capacity * 2) + 2
+- Its implements Serializable , Comparable, CharSequence
+- StringBuffer is also final class and belongs java.lang package
+
+Constructors:
+
+	- public StringBuffer()
+	- public StringBuffer(int capacity)
+	- public StringBuffer(String string)
+	- pubic StringBuffer(java.lang.CharSequence)
+
+
+Examples:
+	StringBuffer sb = new StringBuffer(); // Creates an empty buffer with default capacity
+	StringBuffer sb = new StringBuffer("Hello"); // Creates a buffer initialized with "Hello"
+	StringBuffer sb = new StringBuffer(32); // creates a buffer with capacity 32 characters 
+	
+
+Methods:
+----------------
+Appending String:
+	sb.append(" World"); // Adds " World" to the end of the current buffer
+
+Inserting String:
+	sb.insert(5, " Java"); // Inserts " Java" at position 5
+	
+Deleting String:
+	sb.delete(5, 10); // Removes characters from position 5 to 10
+
+Replacing String:
+	sb.replace(5, 10, "New"); // Replaces characters from position 5 to 10 with "New"
+
+Reversing  String:
+	sb.reverse(); // Reverses the entire content of the buffer
+
+Getting the Length and Capacity:
+	int length = sb.length(); // Gets the length of the current content
+	int capacity = sb.capacity(); // Gets the total capacity of the buffer
+
+Converting to String:
+	String str = sb.toString(); // Converts the StringBuffer content to a String
+
+Summary:
+    StringBuffer is used when you need to modify a string multiple times.
+    Mutable: You can change its content directly.
+    Thread-Safe: Suitable for use in multi-threaded environments.
+    Dynamic Capacity: Adjusts its size as needed.
+
+
+						############################
+						   StringBuilder in JAVA 
+						############################
+- In Java, StringBuilder is a class designed to handle mutable sequences of characters.
+- StringBuffer, StringBuilder is used for creating and modifying strings
+- Mutable
+- Not Thread Safe: Non-Synchronized
+- Dynamic Capacity
+- StringBuilder is generally faster than StringBuffer
+- Its implements Serializable , Comparable, CharSequence
+- It's final class belongs to java.lang 
+
+
+Constructors:
+	- public StringBuilder()
+	- public StringBuilder(int capacity)
+	- public StringBuilder(String string)
+	- public StringBuilder(java.lang.CharSequence)
+
+Methods: 
+----------------
+
+Append
+	StringBuilder sb = new StringBuilder("Hello");
+	sb.append(" World"); // Adds " World" to the end of the current content
+
+Insert:
+	sb.insert(5, " Java"); // Inserts " Java" at index 5
+
+Delete:
+	sb.delete(5, 10); // Deletes characters from index 5 to 10
+
+Replace:
+	sb.replace(5, 10, "New"); // Replaces characters from index 5 to 10 with "New"
+
+Reverse:
+	sb.reverse(); // Reverses the content of the StringBuilder
+
+Length:
+	int length = sb.length(); // Returns the length of the current content
+
+Capacity:
+	int capacity = sb.capacity(); // Returns the current capacity
+
+Substring:
+	String substr = sb.substring(5, 10); // Extracts a substring from index 5 to 10
+
+
+						############################
+						   Input in JAVA 
+						############################
+						
+- In Java we can take input from user/outside world in 3 ways 
+	=> Using Scanner class 
+	=> Using BufferReader class 
+	=> Using CommandLine Arguments 
+	
+	
+- System.in:
+	standard input stream that is used to read characters from the keyboard or any other standard input device.
+- System.out:
+	  standard output stream that is used to produce the result of a program on an output device like the computer screen.
+	  
+Using Scanner class 
+------------------------
+    - Java Scanner class allows the user to take input from the console.
+    - It belongs to java.util package.
+    - It is used to read the input of primitive types like int, double, long, short, float, and byte.
+    - It is the easiest way to read input in Java program.
+
+Syntax:
+	Scanner scan = new Scanner(System.in);
+	
+Methods:
+-------------
+next() : Reads the next token from the input as a String. Tokens are separated by whitespace.
+	Scanner scanner = new Scanner("Hello World");
+	String word = scanner.next(); // "Hello"
+
+nextLine(): Reads the next line of input as a String, including any whitespace.
+	Scanner scanner = new Scanner("Hello World\nNext Line");
+	String line = scanner.nextLine(); // "Hello World"
+
+nextInt(): Reads the next token as an int.
+	Scanner scanner = new Scanner("42");
+	int number = scanner.nextInt(); // 42
+
+nextFloat():  Reads the next token as a float
+	Scanner scanner = new Scanner("2.718f");
+	float e = scanner.nextFloat(); // 2.718
+
+
+nextDouble():  Reads the next token as a double.
+	Scanner scanner = new Scanner("3.14");
+	double pi = scanner.nextDouble(); // 3.14
+
+nextBoolean(): Reads the next token as a boolean
+	Scanner scanner = new Scanner("true");
+	boolean flag = scanner.nextBoolean(); // true
+
+nextByte():
+	Scanner scanner = new Scanner("127");
+	byte b = scanner.nextByte(); // 127
+
+For character use
+	next().charAt(0) --> reads first character only.
+	
+others methods:
+	- nextShort() 
+	- nextLong()
+	- hasNext() 
+	- hasNextLine() 
+	- skip() 
+	
+	
+Usin BufferedReader
+========================
+- It is a simple class that is used to read a sequence of characters.
+- BufferedReader is a class in Java used for reading text from a character-based input stream
+- Character-Based: It operates on character data, which is suitable for text file reading.
+- Efficient Line Reading: It provides a method to read an entire line of text, 
+						  which simplifies reading lines from a file or input stream.
+- InputStreamReader() : converts the input stream of bytes into a stream of characters 
+						so that it can be read as BufferedReader expects a stream of character
+		
+
+Methods:
+read() : Reads a single character from the input stream and returns it as an integer. 
+		Returns -1 when the end of the stream is reached.
+		
+readLine(): Reads a line of text. Returns null when the end of the stream is reached. 
+			This method is useful for reading lines of text efficiently.
+			
+			
+Examples:
+    BufferedReader bfn = new BufferedReader(
+        new InputStreamReader(System.in));
+
+    // String reading internally
+    String str = bfn.readLine();
+
+    
+    int it = Integer.parseInt(bfn.readLine());
+	
+	float ft = Float.parseFloat(bfn.readLine());
+	
+	double salary = Double.parseDouble(bfn.readLine());
+	
+    // Printing String
+    System.out.println("Entered String : " + str);
+
+    // Printing Integer
+    System.out.println("Entered Integer : " + it);
+
+
+==============
+
+					############################
+						   Ouput in JAVA 
+					############################
+					
+- System.out is a standard output stream that prints text to the console. 
+- It is the most straightforward way to produce output in Java
+Methods:
+	System.out.print(): Prints text without a newline at the end
+		System.out.print("Hello");
+		System.out.print(" World"); // Output: Hello World
+	
+	System.out.println(): Prints text with a newline at the end.
+		System.out.println("Hello");
+	    System.out.println("World"); // Output: Hello
+                             //         World
+							 
+	System.out.printf(): Formats text using format specifiers
+		int age = 25;
+		String name = "John";
+		System.out.printf("Name: %s, Age: %d%n", name, age); // Output: Name: John, Age: 25
+		System.out.println("Name: " + name + ", Age: " + age);
+	Format Specifiers:
+    %s for strings
+    %d for integers
+    %f for floating-point numbers
+    %n for a new line (platform-independent)
+    
+System.out.print() and System.out.println(): Basic methods for printing to the console.
+System.out.printf(): For formatted text output.
+PrintWriter: For advanced text output to files or other streams.
+StringBuilder: Useful for constructing and outputting large or complex strings.
+Logger: For more advanced logging needs, especially in larger applications.
+
+							
+					############################
+						   Arrays in Java 
+					############################
+					
+- Arrays are used to store multiple values in a single variable, 
+	instead of declaring separate variables for each value.
+- Arrays are stored in contagious memory [consecutive memory locations].
+- Java array can also be used as a static field, a local variable, or a method parameter
+- The size of an array must be specified by int or short value and not long.
+- Every array type implements the interfaces Cloneable and java.io.Serializable.
+- The size of the array cannot be altered(once initialized). 
+	However, an array reference can be made to point to another array
+- A method can accept array as paramter and return array as value [ return must be array ] 
+
+- Arrays are pass by value or reference In JAVA?
+
+SYNTAX:
+
+	dataType[] arrayName; // declaration
+	arrayName = new dataType[arraySize]; // Instantiation
+
+PROPERTIES:
+-----------------
+- Declaration and intialisation of array is different. 
+- On Declaration only reference Var is created 
+- On intialisation space is created for all arr elements.
+- We can pass array as a parameter
+- we can declared Anonymous array
+- we can return an array from function.
+- The Java Virtual Machine (JVM) throws an ArrayIndexOutOfBoundsException , 
+	when we try to access [if index is invalid]
+Array base address:
+	- The address of the first array element is called the array base address.
+	- Each element will occupy the memory space required to accommodate the values for its type, i.e.;
+	- Depending on the data type of the elements, 1, 4, or 8 bytes of memory are allocated for each element
+
+- Reference Variable will store address of the data  
+
+example: 
+	int[] numbers; 
+	numbers = new int[5]; // Creates an array of 5 integers
+
+	byte byteArray[];
+	short shortsArray[];
+	boolean booleanArray[];
+	long longArray[];
+	float floatArray[];
+	double doubleArray[];
+	char charArray[];
+	
+	MyClass myClassArray[]; 
+
+	Object[]  ao,        // array of Object
+	Collection[] ca;
+
+VALID DECLARATIONS:
+	int[] numbers = new int[10];
+	int []numbers = new int[10];
+	int numbers[] = new int[10];
+	int numbers[] = {10, 20, 30}; // Array literal 
+	int numbers[] = new int[] {10,20,30,50}
+	
+INVALID DECLARATIONS:
+	int[10] numbers = new int[];
+	int numbers[] = new int[10] {10,20,30,50}
+	
+	
+Array Literals 
+-------------------
+	int[] numbers = {1, 2, 3, 4, 5}; // Array of integers with initial values
+	
+	or 
+	int[] numbers = new int[] {10,20,30,40,50};
+	
+	String[] cars = {"Volvo", "BMW", "Ford", "Mazda"};
+	cars[0] = "Opel";
+	
+Accessing Elements:
+-------------------------
+	int firstNumber = numbers[0]; // arrayName[index]
+	
+	int someNumber = numbers[6]; // ArrayIndexOutBoundsException, 6 is invalid index
+	
+	TRY THIS?
+	System.out.println(cars.length);
+	System.out.println(cars[0]);
+	System.out.println(cars[2]);
+	System.out.print(cars[-1]);
+
+Advantages
+------------------
+
+    - Code Optimization: It makes the code optimized, we can retrieve or sort the data efficiently.
+    - Random access: We can get any data located at an index position.
+
+Disadvantages:
+--------------------
+	
+    - Size Limit: We can store only the fixed size of elements in the array. It doesn't grow its size at runtime.
+    - To solve this problem, collection framework is used in Java which grows automatically.
+
+
+============================
+MULTIDIMENSIONAL ARRAYS
+==============================
+- Java supports multidimensional arrays, which are arrays of arrays. 
+- The most common is the two-dimensional array.
+
+syntax: 
+	dataType[][] arrayName; // declaration
+	arrayName = new dataType[rows][columns]; // Instantiation
+
+examples:
+	int[][] matrix;
+	matrix = new int[3][4]; // Creates a 3x4 matrix
+
+VALID DECLARATIONS:
+---------------------
+	int[][] matrix= new int[3][4];
+	int [][]matrix= new int[3][4];
+	int matrix[][]= new int[3][4];
+	int []matrix[]= new int[3][4];
+	int[][] matrix = new int[3][]; // Jagged array 
+	
+INVALID DECLARATION:
+--------------------------
+int[][] matrix = new int[][4];
+
+Using Literal:
+	int[][] matrix = { {1, 2, 3}, {4, 5, 6}, {7, 8, 9} };
+
+Accessing Elements::
+	Access elements using two indices: arrayName[rowIndex][columnIndex]
+	int value = matrix[1][2]; // Accesses the element in the 2nd row and 3rd column (6 in this case)
+
+
+============================
+		JAGGED ARRAYS
+==============================
+- If we are creating odd number of columns in a 2D array, it is known as a jagged array. 
+- In other words, it is an array of arrays with different number of columns.
+
+example:
+		//declaring a 2D array with odd columns  
+		int arr[][] = new int[3][];  
+		arr[0] = new int[3];  
+		arr[1] = new int[4];  
+		arr[2] = new int[2];  
+	
+
+==> We can copy an array to another by the arraycopy() method of System class.
+==> Cloning an Array:
+	- Java array implements the Cloneable interface,
+	- we can create the clone of the Java array. 
+		=> If we clone of a 1D array, it creates the deep copy of the Java array, means it will copy the actual value.
+		=> If we clone of a N dimensional array, it creates the shallow copy which means it copies the references
+		
+
+
+
+QUESTIONS
+-------------------
+- What is Comparator and Comparable interfaces?
+	Comparable: 
+		- it is natural order sorting 
+		- int compareTo(T o) -> negative, zero, postive 
+	Comparator:
+		- it is used for custom sorting 
+		- int compare(T o1, T o2) -> return negative, zero, positive 
+		- boolean equals(Object obj) 
+
+- What are Wrapper Classes and It's Importance?
+- What is Cloneable and Serializable Interfaces?
+
+		
+
