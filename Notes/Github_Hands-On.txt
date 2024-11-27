@@ -1,0 +1,133 @@
+Hands-On Exercise: Collaborating on a Project with GitHub
+Objective:
+
+By the end of this exercise, you will:
+
+    Learn how to create a repository on GitHub.
+    Learn how to clone a repository to your local machine.
+    Learn how to make changes, commit them, and push them back to GitHub.
+    Understand the workflow for collaboration, including branching, creating pull requests, and merging changes.
+	
+##Step 1: Download and Install Git for Windows
+
+    a) Download Git:
+        Visit the official Git website: Git for Windows [ https://git-scm.com/download/win ]
+        The download should start automatically. If not, click on the appropriate link for your operating system version (32-bit or 64-bit).
+
+    b) Run the Installer:
+        Once the download is complete, run the Git installer (.exe file).
+        Follow the installation wizard. Below are some important options you should pay attention to:
+		
+##Step 1.1: Set Up GitHub Account
+
+    If you don’t already have a GitHub account, go to GitHub and sign up.
+    Set up your profile with a photo and bio to make it look more professional.
+	
+	
+##Step 2: Create a New Repository
+
+    Create a new repository:
+        Go to your GitHub homepage and click the green "New" button under your repositories.
+        Name the repository hands-on-exercise.
+        Choose a license (e.g., MIT License) and initialize with a README.md file to describe your project.
+        Click "Create Repository."
+		
+
+##Step 3: Clone the Repository to Your Local Machine
+
+    Clone the repository:
+        On your repository page, click the green "Code" button and copy the URL under "Clone with HTTPS."
+        Open your terminal or Git Bash, and run the following command:
+		
+		ex: git clone https://github.com/YOUR_USERNAME/hands-on-exercise.git
+		
+	Navigate into the folder:
+			cd hands-on-exercise
+
+
+##Step 4: Modify Files Locally
+
+    Open the README.md file in a text editor (like VS Code or Sublime Text).
+    Add a brief description of yourself or a fun fact.
+    Save the changes.
+	
+
+##Step 5: Commit Changes Locally
+	a)In your terminal, check the status of your changes:
+		git status
+
+	b)Stage the changes:
+		git add README.md
+
+	c) Commit the changes with a message:
+		git commit -m "Added a personal description to README"
+
+###Step 5.1: Set Up Your Git Identity
+	a) Set your global username:
+	   In Git Bash, type the following command, replacing Your Name with your actual name:
+		git config --global user.name "Your Name"
+	
+	b) Set your global email address:
+	   Similarly, set your email (the one linked to your GitHub or other Git hosting account):
+		git config --global user.email "youremail@example.com"
+	
+	c) Verify your configuration:To verify your settings, you can run the following command:
+		git config --list
+
+		
+##Step 6: Push Changes to GitHub
+	a) Push the changes to the remote repository:
+		git push origin main
+
+	b) Go to your GitHub repository page and confirm that the changes are reflected in the README.md file.
+		
+
+##Step 7: Create a New Branch for a Feature	
+	a) Create a new branch for adding a new feature:
+		git checkout -b new-feature
+
+	b) Make a change in a file (e.g., README.md), such as adding a new section about a project or a skill you're working on.
+	c) Stage and commit the changes again:
+		git add README.md
+		git commit -m "Added a section about a new skill"
+
+	d) Push the branch to GitHub:
+		git push origin new-feature
+
+
+##Step 8: Open a Pull Request
+
+	a) On GitHub, go to your repository. You will see a message like:
+
+		“Your recently pushed branches: new-feature”
+
+		Click "Compare & Pull Request."
+
+	b) Write a brief description of the changes you've made, and click "Create Pull Request."
+
+	c) Review the pull request and merge it into the main branch.
+	
+##Step 9: Merge the Pull Request
+	a) Once the pull request is created, you can merge the changes:
+
+     	On GitHub, click "Merge pull request" and then confirm the merge.
+
+	b) After merging, delete the new-feature branch (optional):
+		git branch -d new-feature
+
+	c) Update your local main branch:
+		git pull origin main
+
+
+
+## Bonus Task: Collaborating with Others
+
+    Forking: Fork a public repository of your choice and make changes to the forked project.
+    Contributing: Submit a pull request to the original repository with your changes.
+    Issues: Open an issue in a public repository to report a bug or suggest an improvement, and tag someone to help resolve it.
+	
+
+### Next Steps
+    Explore advanced GitHub features like Actions (for CI/CD), Releases, and GitHub Pages.
+    Learn more about collaboration workflows, such as GitFlow
+	
