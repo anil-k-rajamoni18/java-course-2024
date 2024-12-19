@@ -6,6 +6,8 @@ public class VariableExamples {
         float _temp = 99.8f;
         char $grade = 'B';
         int Age = 22;
+        System.out.println(age);
+        System.out.println(studentName);
 
         // invalid declarations 
         // String 1stpassword = "Test123"; 

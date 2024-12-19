@@ -29,5 +29,8 @@ public class Student {
         System.out.println("************* static/class variables***********");
         System.out.println(Student.collegeName);
 
+
+        var test = "Hello";
+        System.out.println(test);
     }
 }
