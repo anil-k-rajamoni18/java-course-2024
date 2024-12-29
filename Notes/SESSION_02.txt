@@ -178,7 +178,6 @@ What is Comparable and Comparator Interfaces?
 - StringBuffer is also final class and belongs java.lang package
 
 Constructors:
-
 	- public StringBuffer()
 	- public StringBuffer(int capacity)
 	- public StringBuffer(String string)
@@ -270,9 +269,9 @@ Substring:
 	String substr = sb.substring(5, 10); // Extracts a substring from index 5 to 10
 
 
-						############################
-						   Input in JAVA 
-						############################
+				#############################################################
+										   Input in JAVA 
+				#############################################################
 						
 - In Java we can take input from user/outside world in 3 ways 
 	=> Using Scanner class 
@@ -375,6 +374,15 @@ Examples:
 
     // Printing Integer
     System.out.println("Entered Integer : " + it);
+
+
+
+Assignment:
+- Create sample.txt and add some lines around 10-12 lines 
+- read sample.txt into java code 
+- count number of vowels 
+- count numbers of upper case letters 
+- count number of spaces
 
 
 ==============
