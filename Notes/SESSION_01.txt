@@ -755,27 +755,6 @@ Operator Associativity
 
 
 
-
-
-###
-1. Introduction
-	BTech | 5SEM | BVRIT | CSE AI/DS | 7.9CGPA
-	1SEM: C (moderate)
-	2SEM: Python (Moderate) 
-		  Numpy, Pandas, Sklearn 
-		  Flask, FastAPI, Django
-	3SEM: IDS 
-	4SEM: JAVA
-	5SEM: ADS 
-		  
-2. Do you Java Fundamentals?
-	- Syntax & Rules 
-	- Variables
-	- Conditional statements 
-	- Looping Statements
-	- Functional Statements
-	
-3. Challenges.
 	- 
 	
 	
